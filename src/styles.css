@@ -1,0 +1,49 @@
+h1 {
+  text-align: left;
+  color: #28527a;
+  font-family: "Inter", sans-serif;
+  font-size: 50px;
+  margin-top: 10px;
+  padding: 10px 0 0 10px;
+}
+
+h2 {
+  font-family: "Inter", sans-serif;
+  font-size: 26px;
+  margin-top: 20px;
+  padding: 10px 0 0 10px;
+}
+p {
+  font-family: sans-serif;
+  margin: 10px 0 20px 10px;
+  padding: 10px 0 0 5px;
+}
+form {
+  padding: 10px 0 0 10px;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+  text-align: right;
+  margin-right: 80px;
+}
+.weather-app {
+  border: outset 5px #8ac4d0;
+  border-radius: 5px;
+  background-color: #fbeeac;
+  margin: 20px;
+  padding: 0;
+  max-width: 600px;
+}
+.current-temperature {
+  font-family: "Inter" sans-serif;
+  font-size: 30px;
+  margin-top: 10px;
+  padding: 10px 0 0 10px;
+}
+.row {
+  margin: 0 0 50px 10px;
+}
