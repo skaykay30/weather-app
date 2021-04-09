@@ -31,12 +31,35 @@ if (minutes < 10) {
 
 h2.innerHTML = `${day}, ${month} ${date}, ${year}, ${hours}:${minutes}`;
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  forecastElement.innerHTML = `
+   <div class="rows">
+     <div class="col-2">
+       <div class="weather-forcast-date"></div>
+       Thu
+       <img
+         src="https://solarsystem.nasa.gov/system/basic_html_elements/11561_Sun.png"
+         alt=""
+         width="42"
+       />
+       <div class="weather-forecast-temperature">
+         <span class="weather-forecast-max">65°</span>
+         <span class="weather-forecast-min">40°</span>
+       </div>
+     </div>
+   </div>`;
+}
+
 function displayWeatherNow(response) {
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#temperature").innerHTML = response.data.main.temp;
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#wind").innerHTML = response.data.wind.speed;
 }
+
+displayForecast();
 
 function search(event) {
   event.preventDefault();
