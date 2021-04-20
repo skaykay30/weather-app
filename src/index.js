@@ -83,7 +83,7 @@ function displayWeatherNow(response) {
 
 
 
-function handleSubmit(event) {
+function search(event) {
   event.preventDefault();
   let city = document.querySelector("#city-input").value;
   let apiKey = "4965d06b98f571e5178fcdd155827c21";
@@ -91,4 +91,4 @@ function handleSubmit(event) {
   axios.get(apiUrl).then(displayWeatherNow);
 }
 let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("submit", handleSubmit);
+searchForm.addEventListener("submit", search);
