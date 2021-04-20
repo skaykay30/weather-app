@@ -66,9 +66,10 @@ if (index < 6) {
          <span class="weather-forecast-min">${Math.round(forcast.temp.min)}°</span>
        </div>
      </div>
-   </div>`);
+   </div>`;
 }
-}
+
+
 
 function displayWeatherNow(response) {
   document.querySelector("#city").innerHTML = response.data.name;
