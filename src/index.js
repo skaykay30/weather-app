@@ -31,25 +31,43 @@ if (minutes < 10) {
 
 h2.innerHTML = `${day}, ${month} ${date}, ${year}, ${hours}:${minutes}`;
 
-function displayForecast() {
-  let forecastElement = document.querySelector("#forecast");
+function formatDay(timestamp){
+  let date = new Date (timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thurs", "Fri", "Sat"];
+  return days[day];
+}
 
-  forecastElement.innerHTML = `
+function displayForecast(response){
+let forecast = response.data.daily;
+
+let forecastElement = document.querySelector("#forecast");
+
+let forecastHTML = `<div class= "row">`;
+forecastElement.forEach(function (forecastDay, index){
+
+if (index < 6) {
+
+  forecastHTML =
+    forcastHTML + 
+  `
    <div class="rows">
      <div class="col-2">
-       <div class="weather-forcast-date"></div>
-       Thu
+       <div class="weather-forcast-date">${formatDay}${forecastDay.dt}</div>
+      
        <img
-         src="https://solarsystem.nasa.gov/system/basic_html_elements/11561_Sun.png"
+         src="https://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"
          alt=""
          width="42"
        />
        <div class="weather-forecast-temperature">
-         <span class="weather-forecast-max">65°</span>
-         <span class="weather-forecast-min">40°</span>
+         <span class="weather-forecast-max">${Math.round(forcast.temp.max)}°
+         </span>
+         <span class="weather-forecast-min">${Math.round(forcast.temp.min)}°</span>
        </div>
      </div>
-   </div>`;
+   </div>`);
+}
 }
 
 function displayWeatherNow(response) {
@@ -59,7 +77,7 @@ function displayWeatherNow(response) {
   document.querySelector("#wind").innerHTML = response.data.wind.speed;
 }
 
-displayForecast();
+
 
 function search(event) {
   event.preventDefault();
