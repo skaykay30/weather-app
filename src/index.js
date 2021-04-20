@@ -2,7 +2,7 @@ let now = new Date();
 
 let h2 = document.querySelector("h2");
 let date = now.getDate();
-let days = ["Sun", "Mon", "Tue", "Wed", "Thurs", "Fri", "Sat"];
+let days = ["Sunday", "Monday", "Tueday", "Wedday", "Thursday", "Friday", "Satday"];
 let day = days[now.getDay()];
 let months = [
   "Jan",
@@ -44,31 +44,34 @@ let forecast = response.data.daily;
 let forecastElement = document.querySelector("#forecast");
 
 let forecastHTML = `<div class= "row">`;
-forecastElement.forEach(function (forecastDay, index){
+forecast.forEach(function (forecastDay, index){
 
 if (index < 6) {
 
   forecastHTML =
     forcastHTML + 
   `
-   <div class="rows">
-     <div class="col-2">
-       <div class="weather-forcast-date">${formatDay}${forecastDay.dt}</div>
-      
-       <img
-         src="https://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"
-         alt=""
-         width="42"
-       />
-       <div class="weather-forecast-temperature">
-         <span class="weather-forecast-max">${Math.round(forcast.temp.max)}°
-         </span>
-         <span class="weather-forecast-min">${Math.round(forcast.temp.min)}°</span>
-       </div>
-     </div>
-   </div>`;
-}
-
+    <div class="col-2">
+        <div class="weather-forecast-date">${formatDay(forecastDay.dt)}</div>
+        <img
+          src="http://openweathermap.org/img/wn/${
+            forecastDay.weather[0].icon
+          }@2x.png"
+          alt=""
+          width="42"
+        />
+        <div class="weather-forecast-temperatures">
+          <span class="weather-forecast-temperature-max"> ${Math.round(
+            forecastDay.temp.max
+          )}° </span>
+          <span class="weather-forecast-temperature-min"> ${Math.round(
+            forecastDay.temp.min
+          )}° </span>
+        </div>
+      </div>
+  `;
+    }
+  });
 
 
 function displayWeatherNow(response) {
@@ -80,7 +83,7 @@ function displayWeatherNow(response) {
 
 
 
-function search(event) {
+function handleSubmit(event) {
   event.preventDefault();
   let city = document.querySelector("#city-input").value;
   let apiKey = "4965d06b98f571e5178fcdd155827c21";
@@ -88,4 +91,4 @@ function search(event) {
   axios.get(apiUrl).then(displayWeatherNow);
 }
 let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("submit", search);
+searchForm.addEventListener("submit", handleSubmit);
