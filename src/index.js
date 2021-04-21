@@ -2,7 +2,15 @@ let now = new Date();
 
 let h2 = document.querySelector("h2");
 let date = now.getDate();
-let days = ["Sunday", "Monday", "Tueday", "Wedday", "Thursday", "Friday", "Satday"];
+let days = [
+  "Sunday",
+  "Monday",
+  "Tueday",
+  "Wedday",
+  "Thursday",
+  "Friday",
+  "Satday",
+];
 let day = days[now.getDay()];
 let months = [
   "Jan",
@@ -31,26 +39,24 @@ if (minutes < 10) {
 
 h2.innerHTML = `${day}, ${month} ${date}, ${year}, ${hours}:${minutes}`;
 
-function formatDay(timestamp){
-  let date = new Date (timestamp * 1000);
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
   let day = date.getDay();
   let days = ["Sun", "Mon", "Tue", "Wed", "Thurs", "Fri", "Sat"];
   return days[day];
 }
 
-function displayForecast(response){
-let forecast = response.data.daily;
+function displayForecast(response) {
+  let forecast = response.data.daily;
 
-let forecastElement = document.querySelector("#forecast");
+  let forecastElement = document.querySelector("#forecast");
 
-let forecastHTML = `<div class= "row">`;
-forecast.forEach(function (forecastDay, index){
-
-if (index < 6) {
-
-  forecastHTML =
-    forcastHTML + 
-  `
+  let forecastHTML = `<div class= "row">`;
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forcastHTML +
+        `
     <div class="col-2">
         <div class="weather-forecast-date">${formatDay(forecastDay.dt)}</div>
         <img
@@ -72,7 +78,7 @@ if (index < 6) {
   `;
     }
   });
-
+}
 
 function displayWeatherNow(response) {
   document.querySelector("#city").innerHTML = response.data.name;
@@ -80,8 +86,6 @@ function displayWeatherNow(response) {
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#wind").innerHTML = response.data.wind.speed;
 }
-
-
 
 function search(event) {
   event.preventDefault();
