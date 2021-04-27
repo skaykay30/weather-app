@@ -79,6 +79,7 @@ function displayForecast(response) {
     }
   });
 }
+let temperatureElement = document.querySelector("#temperature");
 `<span class="temperature">${Math.round}</span>`;
 
 function displayWeatherNow(response) {
