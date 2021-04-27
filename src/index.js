@@ -79,7 +79,7 @@ function displayForecast(response) {
     }
   });
 }
-<span class="temperature">${Math.round}</span>;
+`<span class="temperature">${Math.round}</span>`;
 
 function displayWeatherNow(response) {
   document.querySelector("#city").innerHTML = response.data.name;
